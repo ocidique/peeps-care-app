@@ -1,4 +1,4 @@
-package com.example.ocid.peepscareapp;
+package com.care.peeps.peeps;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.example.ocid.peepscareapp;
+package com.care.peeps;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.ocid.peepscareapp", appContext.getPackageName());
+        assertEquals("com.care.peeps", appContext.getPackageName());
     }
 }
