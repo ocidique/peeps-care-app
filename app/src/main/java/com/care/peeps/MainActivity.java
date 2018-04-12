@@ -28,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
         // Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
 
-        // Get current user
-        // final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        //Get current user
+
 
         authListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -56,6 +56,13 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.settings:
                 startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+                return true;
+            case R.id.Chat:
+                //final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                //Intent intent = new Intent(MainActivity.this, ChatApp.class);
+                //intent.putExtra("CurrentUser",user.toString());
+                startActivity(new Intent(MainActivity.this, ChatApp.class));
+
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

@@ -8,4 +8,10 @@
         app:showAsAction="never"
         android:actionLayout="@layout/activity_main"
         android:title="@string/settings_view_title" />
+    <item
+        android:id="@+id/Chat"
+        android:actionLayout="@layout/activity_main"
+        android:orderInCategory="100"
+        android:title="@string/chat_view_title"
+        app:showAsAction="never" />
 </menu>
