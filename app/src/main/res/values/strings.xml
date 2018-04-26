@@ -17,7 +17,7 @@
     <string name="hint_password">Password</string>
     <string name="hint_name">Fullname</string>
     <string name="btn_login">LOGIN</string>
-    <string name="btn_link_to_register">Don\'t have an account yet? Register here!</string>
+    <string name="btn_link_to_register">Don\'t have an account yet? <u>Register here!</u></string>
     <string name="btn_link_to_login">Already registered? Login in here.</string>
     <string name="title_activity_reset_password">ResetPasswordActivity</string>
     <string name="btn_forgot_password">Forgot your password?</string>
