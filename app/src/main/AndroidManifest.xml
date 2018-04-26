@@ -26,7 +26,10 @@
         <activity android:name=".ResetPasswordActivity" />
         <activity android:name=".SettingsActivity" />
         <activity android:name=".RoomSelectActivity" />
-        <activity android:name=".ChatApp"></activity>
+        <activity android:name=".ChatApp"/>
+
+
+
     </application>
 
 </manifest>

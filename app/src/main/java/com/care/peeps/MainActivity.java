@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                 //final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 //Intent intent = new Intent(MainActivity.this, ChatApp.class);
                 //intent.putExtra("CurrentUser",user.toString());
-                startActivity(new Intent(MainActivity.this, ChatApp.class));
+                startActivity(new Intent(MainActivity.this, RoomSelectActivity.class));
 
                 return true;
             default:
