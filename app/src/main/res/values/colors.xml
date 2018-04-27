@@ -3,6 +3,7 @@
     <color name="colorPrimary">#eeeeee</color>
     <color name="colorPrimaryDark">#eeeeee</color>
     <color name="colorAccent">#ffa438</color>
+    <color name="title">#ffa438</color>
 
     <color name="bg_login">#ffa438</color>
     <color name="bg_register">#2e3237</color>

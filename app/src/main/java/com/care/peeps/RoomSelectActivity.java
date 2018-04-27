@@ -1,5 +1,6 @@
 package com.care.peeps;
 
+import android.content.Intent;
 import android.nfc.Tag;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,9 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -43,8 +47,9 @@ public class RoomSelectActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room_select);
-        //toolbar = (Toolbar) findViewById(R.id.room_toolbar);
-        //setActionBar(toolbar);
+        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.main_toolbar);
+        //toolbar.setTitle(R.string.app_name);
+        setSupportActionBar(toolbar);
         //getActionBar().setTitle("ALL Rooms");
         //getActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -107,4 +112,36 @@ public class RoomSelectActivity extends AppCompatActivity {
             mView = itemView;
         }
     }*/
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.room_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.settings:
+                startActivity(new Intent(this, SettingsActivity.class));
+                return true;
+            case R.id.Add_Chat_Rooms:
+                //final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                //Intent intent = new Intent(MainActivity.this, ChatApp.class);
+                //intent.putExtra("CurrentUser",user.toString());
+                startActivity(new Intent(this, RoomSelectActivity.class));
+
+            case R.id.Delete_ChatRooms:
+                //final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                //Intent intent = new Intent(MainActivity.this, ChatApp.class);
+                //intent.putExtra("CurrentUser",user.toString());
+                startActivity(new Intent(this, RoomSelectActivity.class));
+
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 }

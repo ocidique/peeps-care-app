@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -56,12 +57,14 @@ public class RoomAdapterList extends RecyclerView.Adapter<RoomAdapterList.RoomVi
     public class RoomViewHolder extends RecyclerView.ViewHolder{
         View mView;
         public TextView roomname;
+        //public ImageView image;
 
         public RoomViewHolder(View itemView) {
             super(itemView);
 
             mView = itemView;
             roomname = (TextView) mView.findViewById(R.id.room_name);
+            //image = (ImageView) mView.findViewById(R.id.imageView);
 
         }
     }

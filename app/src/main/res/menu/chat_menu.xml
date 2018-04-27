@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/settings"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:actionLayout="@layout/activity_chat_app"
+        android:title="@string/settings_view_title" />
+
+    <item
+        android:id="@+id/Chat_Rooms"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:actionLayout="@layout/activity_chat_app"
+        android:title="Chat Rooms" />
+    <item
+        android:id="@+id/members"
+        android:actionLayout="@layout/activity_chat_app"
+        android:orderInCategory="100"
+        android:title="Members"
+        app:showAsAction="never" >
+    <menu>
+        <item
+            android:id="@+id/List_Members"
+            android:orderInCategory="100"
+            app:showAsAction="never"
+            android:actionLayout="@layout/activity_chat_app"
+            android:title="Member List" />
+        <item
+            android:id="@+id/Add_members"
+            android:orderInCategory="100"
+            app:showAsAction="never"
+            android:actionLayout="@layout/activity_chat_app"
+            android:title="Add Members" />
+
+
+
+    </menu>
+
+
+    </item>>
+</menu>
