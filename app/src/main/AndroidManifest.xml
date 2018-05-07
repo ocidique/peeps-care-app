@@ -25,10 +25,11 @@
         <activity android:name=".ResetPasswordActivity" />
         <activity android:name=".SettingsActivity" />
         <activity android:name=".RoomSelectActivity" />
-        <activity android:name=".ChatApp"/>
-
-
-
+        <activity android:name=".ChatApp" />
+        <activity android:name=".MemberSelectActivity" />
+        <activity android:name=".Add_Member" />
+        <activity android:name=".Add_Chatroom" />
+        <activity android:name=".DeleteChatRoom"></activity>
     </application>
 
 </manifest>

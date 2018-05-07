@@ -9,6 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+
 import java.util.List;
 
 /**
@@ -18,6 +21,7 @@ import java.util.List;
 public class RoomAdapterList extends RecyclerView.Adapter<RoomAdapterList.RoomViewHolder> {
     public List<Room_model> roomlist;
     private Context context;
+    RequestOptions option;
 
     public RoomAdapterList(Context context) {
         this.context = context;
@@ -27,6 +31,7 @@ public class RoomAdapterList extends RecyclerView.Adapter<RoomAdapterList.RoomVi
     public RoomAdapterList(List<Room_model> roomlist){
 
         this.roomlist = roomlist;
+        //option = new RequestOptions().centerCrop().placeholder(R.drawable.loading_shape).error(R.drawable.loading_shape);
 
     }
 
@@ -40,7 +45,11 @@ public class RoomAdapterList extends RecyclerView.Adapter<RoomAdapterList.RoomVi
     @Override
     public void onBindViewHolder(RoomViewHolder holder, int position) {
        holder.roomname.setText(roomlist.get(position).getname());
-       holder.mView.setOnClickListener(new View.OnClickListener() {
+       holder.status.setText(roomlist.get(position).getstatus());
+        //Glide.with(context).load(roomlist.get(position).getImage()).apply(option).into(holder.image);
+
+
+        holder.mView.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
                view.getContext().startActivity(new Intent(view.getContext(),ChatApp.class));
@@ -57,7 +66,8 @@ public class RoomAdapterList extends RecyclerView.Adapter<RoomAdapterList.RoomVi
     public class RoomViewHolder extends RecyclerView.ViewHolder{
         View mView;
         public TextView roomname;
-        //public ImageView image;
+        public ImageView image;
+        public TextView status;
 
         public RoomViewHolder(View itemView) {
             super(itemView);
@@ -65,6 +75,7 @@ public class RoomAdapterList extends RecyclerView.Adapter<RoomAdapterList.RoomVi
             mView = itemView;
             roomname = (TextView) mView.findViewById(R.id.room_name);
             //image = (ImageView) mView.findViewById(R.id.imageView);
+            status = (TextView) mView.findViewById(R.id.room_status);
 
         }
     }

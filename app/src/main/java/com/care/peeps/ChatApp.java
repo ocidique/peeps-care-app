@@ -23,6 +23,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
@@ -50,8 +51,9 @@ public class ChatApp extends AppCompatActivity {
     public static final String  cDate = "createdAt";
     public static final String  content = "msg";
     String currentDateTimeString;
-    String username = "qDSWt4zmRMJMWon2NrJ1";
+    String username;
     String msgcontent;
+    private FirebaseAuth auth;
 
 
 
@@ -62,7 +64,7 @@ public class ChatApp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_app);
-        //messagetext = (EditText) findViewById(R.id.editmess);
+        //messagetext = (EditText) findViewById(R.id.editmessage);
         currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
 
         Toolbar toolbar = findViewById(R.id.main_toolbar);
@@ -72,10 +74,14 @@ public class ChatApp extends AppCompatActivity {
 
         mMessagemodel  = new ArrayList<>();
         messageAdapterList = new MessageAdapterList(mMessagemodel);
-        mMessageList = (RecyclerView) findViewById(R.id.message);
+        mMessageList = (RecyclerView) findViewById(R.id.editmessage);
         mMessageList.setHasFixedSize(true);
         mMessageList.setLayoutManager(new LinearLayoutManager(this));
         mMessageList.setAdapter(messageAdapterList);
+        auth = FirebaseAuth.getInstance();
+        username = auth.getCurrentUser().getUid();
+        Log.d("username" , username);
+
 
         mFirestore.collection("rooms").document("Linxvw0qrN6CxznrGTyc").collection("messages").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -88,13 +94,20 @@ public class ChatApp extends AppCompatActivity {
                         String user = doc.getDocument().getString("from");
                         String date = doc.getDocument().getString("createdAt");
                         mMessagemodel.add(messages);
-                        messageAdapterList.notifyDataSetChanged();
                         Log.d("Message", message);
                         Log.d("user", user);
                         Log.d("date", date);
 
                     }
                 }
+                messageAdapterList.notifyDataSetChanged();
+                mMessageList.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Call smooth scroll
+                        mMessageList.smoothScrollToPosition(messageAdapterList.getItemCount());
+                    }
+                });
 
             }
         });
@@ -183,7 +196,7 @@ public class ChatApp extends AppCompatActivity {
                 //final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 //Intent intent = new Intent(MainActivity.this, ChatApp.class);
                 //intent.putExtra("CurrentUser",user.toString());
-                startActivity(new Intent(this, RoomSelectActivity.class));
+                startActivity(new Intent(this, MemberSelectActivity.class));
 
             case R.id.Add_members:
                 //final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();

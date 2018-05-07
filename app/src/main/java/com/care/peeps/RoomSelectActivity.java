@@ -1,8 +1,6 @@
 package com.care.peeps;
 
 import android.content.Intent;
-import android.nfc.Tag;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,17 +10,13 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -32,26 +26,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RoomSelectActivity extends AppCompatActivity {
-   // private DocumentReference documentreference = FirebaseFirestore.getInstance().collection("rooms").document("");
-    //TextView rooms;
+  // private DocumentReference documentreference = FirebaseFirestore.getInstance().collection("rooms").document("");
+   TextView rooms;
+
 
     private Toolbar toolbar;
     private RecyclerView mroomlist;
     private FirebaseFirestore mFirestore;
     private List<Room_model> room_modelList;
     private RoomAdapterList roomAdapterList;
-   // private DatabaseReference mroomdb;
-
+    private DatabaseReference mroomdb;
+    //private RelativeLayout relativeLayout1;
+    //private RelativeLayout relativeLayout2;
+    //private RelativeLayout relativeLayout3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room_select);
+
+        String url = "https://firebasestorage.googleapis.com/v0/b/peeps-care-app.appspot.com/o/room.png?alt=media&token=516d1785-507f-4e7f-8217-1b83d54b7b42";
         android.support.v7.widget.Toolbar toolbar = findViewById(R.id.main_toolbar);
-        //toolbar.setTitle(R.string.app_name);
+        toolbar.setTitle(R.string.app_name);
         setSupportActionBar(toolbar);
-        //getActionBar().setTitle("ALL Rooms");
-        //getActionBar().setDisplayHomeAsUpEnabled(true);
+//        getActionBar().setTitle("ALL Rooms");
+  //      getActionBar().setDisplayHomeAsUpEnabled(true);
 
         //mroomdb = FirebaseDatabase.getInstance().getReference().child("Room");
         room_modelList = new ArrayList<>();
@@ -72,7 +71,12 @@ public class RoomSelectActivity extends AppCompatActivity {
                 for(DocumentChange doc : documentSnapshots.getDocumentChanges()) {
                    if (doc.getType() == DocumentChange.Type.ADDED){
 
+
+
+
                        Room_model rooms = doc.getDocument().toObject(Room_model.class);
+                       Log.d("room", rooms.getname());
+                       Log.d("room", rooms.getImage());
                        room_modelList.add(rooms);
                        roomAdapterList.notifyDataSetChanged();
 
@@ -80,6 +84,35 @@ public class RoomSelectActivity extends AppCompatActivity {
                 }
             }
         });
+
+
+        /*relativeLayout1 = (RelativeLayout) findViewById(R.id.Layout1);
+        relativeLayout2 = (RelativeLayout) findViewById(R.id.Layout2);
+        relativeLayout3 = (RelativeLayout) findViewById(R.id.Layout3);
+
+        relativeLayout1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                startActivity(new Intent(RoomSelectActivity.this, ChatApp.class));
+
+            }
+        });
+
+        relativeLayout2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(RoomSelectActivity.this, ChatApp.class));
+            }
+        });
+
+        relativeLayout3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(RoomSelectActivity.this, ChatApp.class));
+            }
+        });*/
+
 
     }
 
@@ -112,6 +145,7 @@ public class RoomSelectActivity extends AppCompatActivity {
             mView = itemView;
         }
     }*/
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

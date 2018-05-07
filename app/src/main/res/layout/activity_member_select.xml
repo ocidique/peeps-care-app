@@ -24,7 +24,7 @@
             android:elevation="4dp"
             android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:title="Avaiable Rooms"
+            app:title="MemberList"
             app:titleMargin="0dp"
             app:titleMarginStart="0dp"
             app:titleTextColor="@android:color/black" />

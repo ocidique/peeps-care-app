@@ -4,7 +4,8 @@
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
     android:background="@drawable/messageshape"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_gravity="right">
 
     <TextView
         android:id="@+id/username"

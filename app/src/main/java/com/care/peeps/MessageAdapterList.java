@@ -11,6 +11,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import static com.care.peeps.R.layout.singlemessagelayout;
+import static com.care.peeps.R.layout.singlemessagesenderlayout;
 
 /**
  * Created by HP on 4/27/2018.
@@ -19,6 +20,8 @@ import static com.care.peeps.R.layout.singlemessagelayout;
 public class MessageAdapterList extends RecyclerView.Adapter<MessageAdapterList.MessageViewHolder> {
     public List<Message_model> messageslist;
     private Context context;
+    private static final int VIEW_TYPE_MESSAGE_SENT = 1;
+    private static final int VIEW_TYPE_MESSAGE_RECEIVED = 2;
 
 
     public MessageAdapterList(Context context) {
@@ -34,10 +37,20 @@ public class MessageAdapterList extends RecyclerView.Adapter<MessageAdapterList.
 
 
 
+
     @Override
     public MessageViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(singlemessagelayout,parent,false);
+        if (viewType == VIEW_TYPE_MESSAGE_SENT) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(singlemessagesenderlayout,parent,false);
+            Log.d("received", "s");
         return new MessageAdapterList.MessageViewHolder(view);
+        }else if (viewType == VIEW_TYPE_MESSAGE_RECEIVED) {
+            View view = LayoutInflater.from(parent.getContext()).inflate(singlemessagelayout,parent,false);
+            Log.d("received", "r");
+            return new MessageAdapterList.MessageViewHolder(view);
+
+        }
+    return null;
     }
 
     @Override
@@ -50,8 +63,24 @@ public class MessageAdapterList extends RecyclerView.Adapter<MessageAdapterList.
 
     @Override
     public int getItemCount() {
+
         return messageslist.size();
     }
+    @Override
+    public int getItemViewType(int position) {
+        Message_model message = (Message_model) messageslist.get(position);
+
+        if (message.getfrom().equals("WpKMCZ1zPHdb3ErPspHNEiODqUR2")) {
+            // If the current user is the sender of the message
+            return VIEW_TYPE_MESSAGE_SENT;
+        } else {
+            // If some other user sent the message
+            return VIEW_TYPE_MESSAGE_RECEIVED;
+        }
+    }
+
+
+
 
     public class MessageViewHolder extends RecyclerView.ViewHolder {
         View mView;

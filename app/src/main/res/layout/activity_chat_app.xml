@@ -12,7 +12,7 @@
         android:id="@+id/main_toolbar"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:background="@color/colorAccent"
+        android:background="@android:color/holo_orange_light"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
@@ -23,30 +23,29 @@
 
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/message"
+        android:id="@+id/editmessage"
         android:layout_width="match_parent"
-        android:layout_height="470dp"
-        android:layout_above="@id/linearLayout"
+        android:layout_height="475dp"
+        android:layout_above="@id/Layout1"
         android:layout_below="@id/main_toolbar">
 
     </android.support.v7.widget.RecyclerView>
 
 
-
     <LinearLayout
+        android:id="@+id/Layout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_alignParentBottom="true"
-        android:id="@+id/linearLayout"
-        android:background="@drawable/roomshape">
+        android:background="@drawable/roomshape"
+        android:orientation="horizontal">
 
         <ImageButton
             android:id="@+id/addimage"
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:layout_weight="5"
-            android:background="@color/colorAccent"
+            android:background="@color/cardview_dark_background"
             android:requiresFadingEdge="horizontal"
             app:srcCompat="@android:drawable/ic_input_add" />
 
@@ -61,7 +60,7 @@
             android:id="@+id/sendmessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/btn_login"
+            android:background="?android:attr/colorPressedHighlight"
             android:onClick="onButtonClicked"
             android:text="Send"
             android:textColor="@android:color/black" />
