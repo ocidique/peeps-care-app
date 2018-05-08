@@ -72,11 +72,12 @@ public class RoomSelectActivity extends AppCompatActivity {
                    if (doc.getType() == DocumentChange.Type.ADDED){
 
 
-
+                       Log.d("roomid", doc.getDocument().getId());
 
                        Room_model rooms = doc.getDocument().toObject(Room_model.class);
-                       Log.d("room", rooms.getname());
-                       Log.d("room", rooms.getImage());
+                       rooms.setRoomid(doc.getDocument().getId());
+                       Log.d("room", rooms.getRoomid());
+                       //Log.d("room", rooms.getImage());
                        room_modelList.add(rooms);
                        roomAdapterList.notifyDataSetChanged();
 
@@ -161,16 +162,14 @@ public class RoomSelectActivity extends AppCompatActivity {
                 startActivity(new Intent(this, SettingsActivity.class));
                 return true;
             case R.id.Add_Chat_Rooms:
-                //final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                //Intent intent = new Intent(MainActivity.this, ChatApp.class);
-                //intent.putExtra("CurrentUser",user.toString());
-                startActivity(new Intent(this, RoomSelectActivity.class));
-
+                startActivity(new Intent(this, Add_Chatroom.class));
+                return true;
             case R.id.Delete_ChatRooms:
-                //final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                //Intent intent = new Intent(MainActivity.this, ChatApp.class);
-                //intent.putExtra("CurrentUser",user.toString());
-                startActivity(new Intent(this, RoomSelectActivity.class));
+                startActivity(new Intent(this, DeleteChatRoom.class));
+
+                return true;
+            case R.id.Edit_User:
+                startActivity(new Intent(this, UserInformation.class));
 
                 return true;
             default:

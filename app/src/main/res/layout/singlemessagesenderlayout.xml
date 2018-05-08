@@ -2,10 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="10dp"
-    android:background="@drawable/messageshape"
-    android:orientation="vertical"
-    android:layout_gravity="right">
+    android:background="@drawable/messagesentshape"
+    android:layout_gravity="right"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="right">
 
     <TextView
         android:id="@+id/username"
@@ -16,7 +23,9 @@
         android:padding="5dp"
         android:text="Sofeem"
         android:textColor="@color/fui_bgTwitter"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textSize="12dp"
+        android:layout_gravity="right" />
 
     <TextView
         android:id="@+id/actualmessage"
@@ -26,7 +35,9 @@
         android:layout_marginRight="15dp"
         android:text="Hello Friend"
         android:textColor="#000000"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textSize="12sp"
+        android:layout_gravity="right"/>
 
     <TextView
         android:id="@+id/timpstamp"
@@ -34,9 +45,12 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="2dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="5dp"
+        android:layout_marginRight="10dp"
         android:layout_marginTop="2dp"
         android:text="9:15 pm"
-        android:textColor="@color/fui_bgTwitter" />
+        android:layout_gravity="right"
+        android:textColor="@color/fui_bgTwitter"
+        android:textSize="8sp"/>
+    </LinearLayout>
 
 </LinearLayout>

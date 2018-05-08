@@ -8,6 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.List;
 
 import static com.care.peeps.R.layout.singlemessagelayout;
@@ -22,6 +25,10 @@ public class MessageAdapterList extends RecyclerView.Adapter<MessageAdapterList.
     private Context context;
     private static final int VIEW_TYPE_MESSAGE_SENT = 1;
     private static final int VIEW_TYPE_MESSAGE_RECEIVED = 2;
+    String username;
+    String msgcontent;
+    private FirebaseAuth auth;
+
 
 
     public MessageAdapterList(Context context) {
@@ -40,6 +47,8 @@ public class MessageAdapterList extends RecyclerView.Adapter<MessageAdapterList.
 
     @Override
     public MessageViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
+
         if (viewType == VIEW_TYPE_MESSAGE_SENT) {
         View view = LayoutInflater.from(parent.getContext()).inflate(singlemessagesenderlayout,parent,false);
             Log.d("received", "s");
@@ -56,9 +65,17 @@ public class MessageAdapterList extends RecyclerView.Adapter<MessageAdapterList.
     @Override
     public void onBindViewHolder(MessageViewHolder holder, int position) {
         //Log.d("check","i am in");
+        if (holder.getItemViewType() == VIEW_TYPE_MESSAGE_SENT){
         holder.username.setText(messageslist.get(position).getfrom());
         holder.content.setText(messageslist.get(position).getmsg());
         holder.timestamp.setText(messageslist.get(position).getcreatedAt());
+    } else
+
+    {
+        holder.username.setText(messageslist.get(position).getfrom());
+        holder.content.setText(messageslist.get(position).getmsg());
+        holder.timestamp.setText(messageslist.get(position).getcreatedAt());
+    }
     }
 
     @Override
@@ -69,8 +86,10 @@ public class MessageAdapterList extends RecyclerView.Adapter<MessageAdapterList.
     @Override
     public int getItemViewType(int position) {
         Message_model message = (Message_model) messageslist.get(position);
+        auth = FirebaseAuth.getInstance();
+        username = auth.getCurrentUser().getEmail();
 
-        if (message.getfrom().equals("WpKMCZ1zPHdb3ErPspHNEiODqUR2")) {
+        if (message.getfrom().equals(username)) {
             // If the current user is the sender of the message
             return VIEW_TYPE_MESSAGE_SENT;
         } else {

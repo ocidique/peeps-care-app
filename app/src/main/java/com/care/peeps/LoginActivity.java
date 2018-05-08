@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,8 +31,11 @@ public class LoginActivity extends AppCompatActivity {
 
         // Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
+        auth.getCurrentUser();
+
 
         if (auth.getCurrentUser() != null) {
+
             startActivity(new Intent(LoginActivity.this, RoomSelectActivity.class));
             finish();
         }
@@ -61,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this, ChatApp.class));
+                startActivity(new Intent(LoginActivity.this, RoomSelectActivity.class));
             }
         });
 
@@ -99,7 +103,7 @@ public class LoginActivity extends AppCompatActivity {
                                         Toast.makeText(LoginActivity.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                                     }
                                 } else {
-                                    Intent intent = new Intent(LoginActivity.this, ChatApp.class);
+                                    Intent intent = new Intent(LoginActivity.this, RoomSelectActivity.class);
                                     startActivity(intent);
                                     finish();
                                 }

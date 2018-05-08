@@ -29,7 +29,8 @@
         <activity android:name=".MemberSelectActivity" />
         <activity android:name=".Add_Member" />
         <activity android:name=".Add_Chatroom" />
-        <activity android:name=".DeleteChatRoom"></activity>
+        <activity android:name=".DeleteChatRoom" />
+        <activity android:name=".UserInformation" />
     </application>
 
 </manifest>

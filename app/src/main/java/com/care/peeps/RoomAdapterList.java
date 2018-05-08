@@ -3,6 +3,7 @@ package com.care.peeps;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,16 +44,17 @@ public class RoomAdapterList extends RecyclerView.Adapter<RoomAdapterList.RoomVi
     }
 
     @Override
-    public void onBindViewHolder(RoomViewHolder holder, int position) {
+    public void onBindViewHolder(final RoomViewHolder holder, final int position) {
        holder.roomname.setText(roomlist.get(position).getname());
        holder.status.setText(roomlist.get(position).getstatus());
         //Glide.with(context).load(roomlist.get(position).getImage()).apply(option).into(holder.image);
 
-
+        Log.d("Aroom", roomlist.get(position).getRoomid());
         holder.mView.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               view.getContext().startActivity(new Intent(view.getContext(),ChatApp.class));
+               view.getContext().startActivity(new Intent(view.getContext(),ChatApp.class).putExtra("roomname",roomlist.get(position).getRoomid()));
+
            }
        });
 
@@ -68,6 +70,7 @@ public class RoomAdapterList extends RecyclerView.Adapter<RoomAdapterList.RoomVi
         public TextView roomname;
         public ImageView image;
         public TextView status;
+
 
         public RoomViewHolder(View itemView) {
             super(itemView);

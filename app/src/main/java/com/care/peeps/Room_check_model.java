@@ -3,33 +3,22 @@ package com.care.peeps;
 import java.io.Serializable;
 
 /**
- * Created by HP on 4/19/2018.
+ * Created by HP on 5/8/2018.
  */
 
-public class Room_model implements Serializable {
+public class Room_check_model implements Serializable {
     public String name;
     public String image;
     public String status;
     private boolean isSelected;
 
-    public String getRoomid() {
-        return roomid;
-    }
-
-    public void setRoomid(String roomid) {
-        this.roomid = roomid;
-    }
-
-    public String roomid;
-
-    public Room_model(){
+    public Room_check_model(){
 
     }
-    public Room_model(String name,String image,String status,String roomid) {
+    public Room_check_model(String name,String image,String status) {
         this.name = name;
         this.image = image;
         this.status = status;
-        this.roomid = roomid;
 
     }
 
@@ -43,7 +32,7 @@ public class Room_model implements Serializable {
 
         return name;
     }
-   public String getImage() {
+    public String getImage() {
         return image;
     }
 

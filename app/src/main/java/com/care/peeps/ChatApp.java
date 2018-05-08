@@ -52,8 +52,10 @@ public class ChatApp extends AppCompatActivity {
     public static final String  content = "msg";
     String currentDateTimeString;
     String username;
+    String userID;
     String msgcontent;
     private FirebaseAuth auth;
+    String roomname;
 
 
 
@@ -66,9 +68,15 @@ public class ChatApp extends AppCompatActivity {
         setContentView(R.layout.activity_chat_app);
         //messagetext = (EditText) findViewById(R.id.editmessage);
         currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
+        Intent Chatroom= getIntent();
+        Bundle b = Chatroom.getExtras();
+        roomname =(String) b.get("roomname");
+
+
 
         Toolbar toolbar = findViewById(R.id.main_toolbar);
         //toolbar.setTitle(R.string.app_name);
+        toolbar.setTitle(R.string.app_name);
         setSupportActionBar(toolbar);
         mFirestore = FirebaseFirestore.getInstance();
 
@@ -79,11 +87,15 @@ public class ChatApp extends AppCompatActivity {
         mMessageList.setLayoutManager(new LinearLayoutManager(this));
         mMessageList.setAdapter(messageAdapterList);
         auth = FirebaseAuth.getInstance();
-        username = auth.getCurrentUser().getUid();
+        username = auth.getCurrentUser().getEmail();
+        userID= auth.getCurrentUser().getUid();
+
         Log.d("username" , username);
+        Log.d("ACroom", roomname);
+        Log.d("UserID", userID);
 
 
-        mFirestore.collection("rooms").document("Linxvw0qrN6CxznrGTyc").collection("messages").addSnapshotListener(new EventListener<QuerySnapshot>() {
+        mFirestore.collection("rooms").document(roomname).collection("messages").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
                 for(DocumentChange doc : documentSnapshots.getDocumentChanges()) {
@@ -191,12 +203,14 @@ public class ChatApp extends AppCompatActivity {
                 //Intent intent = new Intent(MainActivity.this, ChatApp.class);
                 //intent.putExtra("CurrentUser",user.toString());
                 startActivity(new Intent(this, RoomSelectActivity.class));
+                return true;
 
             case R.id.List_Members:
                 //final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 //Intent intent = new Intent(MainActivity.this, ChatApp.class);
                 //intent.putExtra("CurrentUser",user.toString());
                 startActivity(new Intent(this, MemberSelectActivity.class));
+                return true;
 
             case R.id.Add_members:
                 //final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();

@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
+
+    <item
+        android:id="@+id/Edit_User"
+        android:actionLayout="@layout/activity_room_select"
+        android:orderInCategory="100"
+        android:title="Edit information"
+        app:showAsAction="never" />
     <item
         android:id="@+id/Add_Chat_Rooms"
         android:orderInCategory="100"
@@ -14,9 +21,7 @@
         android:actionLayout="@layout/activity_room_select"
         android:orderInCategory="100"
         android:title="Delete ChatRooms"
-        app:showAsAction="never" >
+        app:showAsAction="never" />
 
 
-
-    </item>>
 </menu>

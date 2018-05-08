@@ -3,7 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    android:background="@drawable/messageshape"
+    android:background="@drawable/loading_shape"
     android:orientation="vertical">
 
     <TextView
@@ -15,6 +15,7 @@
         android:padding="5dp"
         android:text="Sofeem"
         android:textColor="@color/fui_bgTwitter"
+        android:textSize="12dp"
         android:textStyle="bold" />
 
     <TextView
@@ -25,17 +26,20 @@
         android:layout_marginRight="15dp"
         android:text="Hello Friend"
         android:textColor="#000000"
+        android:textSize="12sp"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/timpstamp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="left"
         android:layout_marginBottom="2dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="5dp"
+        android:layout_marginRight="10dp"
         android:layout_marginTop="2dp"
         android:text="9:15 pm"
-        android:textColor="@color/fui_bgTwitter" />
+        android:textColor="@color/fui_bgTwitter"
+        android:textSize="8sp" />
 
 </LinearLayout>
