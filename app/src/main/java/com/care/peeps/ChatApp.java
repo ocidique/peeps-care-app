@@ -77,7 +77,7 @@ public class ChatApp extends AppCompatActivity implements NavigationView.OnNavig
         //messagetext = (EditText) findViewById(R.id.editmessage);
         currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
         Intent Chatroom= getIntent();
-        Bundle b = Chatroom.getExtras();
+
         mDrawerLayout =(DrawerLayout) findViewById(R.id.drawlaychat);
         mToogle = new ActionBarDrawerToggle(this,mDrawerLayout,R.string.open,R.string.close);
         mDrawerLayout.addDrawerListener(mToogle);
@@ -85,7 +85,9 @@ public class ChatApp extends AppCompatActivity implements NavigationView.OnNavig
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        //roomname =(String) b.get("roomname");
+        Bundle b = Chatroom.getExtras();
+        roomname =(String) b.get("roomname");
+        Log.d("name_of_room",roomname);
 
 
 
@@ -110,7 +112,7 @@ public class ChatApp extends AppCompatActivity implements NavigationView.OnNavig
         //Log.d("UserID", userID);
 
 
-        mFirestore.collection("rooms").document("Linxvw0qrN6CxznrGTyc").collection("messages").addSnapshotListener(new EventListener<QuerySnapshot>() {
+        mFirestore.collection("rooms").document(roomname).collection("messages").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
                 for(DocumentChange doc : documentSnapshots.getDocumentChanges()) {
@@ -121,9 +123,7 @@ public class ChatApp extends AppCompatActivity implements NavigationView.OnNavig
                         String user = doc.getDocument().getString("from");
                         String date = doc.getDocument().getString("createdAt");
                         mMessagemodel.add(messages);
-                        Log.d("Message", message);
-                        Log.d("user", user);
-                        Log.d("date", date);
+
 
                     }
                 }

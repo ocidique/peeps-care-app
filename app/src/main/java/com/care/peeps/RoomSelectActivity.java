@@ -94,6 +94,7 @@ public class RoomSelectActivity extends AppCompatActivity {
                        Room_model rooms = doc.getDocument().toObject(Room_model.class);
                        rooms.setRoomid(doc.getDocument().getId());
                        Log.d("room", rooms.getRoomid());
+                       Log.d("room", rooms.getstatus());
                        //Log.d("room", rooms.getImage());
                        room_modelList.add(rooms);
                        roomAdapterList.notifyDataSetChanged();

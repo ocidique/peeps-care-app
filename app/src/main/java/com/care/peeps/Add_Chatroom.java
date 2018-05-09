@@ -39,7 +39,7 @@ public class Add_Chatroom extends AppCompatActivity {
 
     public void onButtonClicked(View view) {
         room_name = (EditText) findViewById(R.id.aRoom_name);
-        room_status = (EditText) findViewById(R.id.aRoom_name);
+        room_status = (EditText) findViewById(R.id.aStatus_name);
 
         String room_name_s = room_name.getText().toString();
         String room_status_s = room_status.getText().toString();
@@ -51,7 +51,7 @@ public class Add_Chatroom extends AppCompatActivity {
         mFirestore.collection("rooms").document(room_name_s).set(roomMap,SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void v) {
-               Toast.makeText(Add_Chatroom.this,"message added",Toast.LENGTH_LONG).show();
+               Toast.makeText(Add_Chatroom.this,"Room added",Toast.LENGTH_LONG).show();
 
             }
         }).addOnFailureListener(new OnFailureListener() {

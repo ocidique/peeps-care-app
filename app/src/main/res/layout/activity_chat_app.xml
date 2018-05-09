@@ -34,7 +34,7 @@
         android:id="@+id/main_toolbar"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:background="@android:color/holo_orange_light"
+        android:background="@color/title"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
@@ -57,34 +57,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
         android:background="@drawable/roomshape"
-        >
-
-        <android.support.design.widget.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_input_add"
-            app:backgroundTint="@android:color/holo_orange_dark"
-            app:fabSize="normal" />
+        android:orientation="horizontal">
 
         <EditText
             android:id="@+id/messagetext"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Type your message" >
+            android:textSize="14dp" >
 
         </EditText>
+
         <Button
             android:id="@+id/sendmessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="?android:attr/colorPressedHighlight"
+            android:background="@color/title"
             android:onClick="onButtonClicked"
             android:text="Send"
-            android:textColor="@android:color/black" >
-        </Button>
+            android:textColor="@android:color/black"></Button>
+
+
 
     </LinearLayout>
 
