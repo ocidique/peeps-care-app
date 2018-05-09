@@ -5,10 +5,10 @@
 
 
     <item
-        android:id="@+id/Edit_User"
+        android:id="@+id/home"
         android:actionLayout="@layout/activity_room_select"
         android:orderInCategory="100"
-        android:title="Edit information"
+        android:title="Home"
         app:showAsAction="never" />
     <item
         android:id="@+id/Add_Chat_Rooms"

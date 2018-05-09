@@ -151,7 +151,7 @@ public class DeleteChatRoom extends AppCompatActivity {
         return true;
     }
 
-
+/*
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -164,16 +164,16 @@ public class DeleteChatRoom extends AppCompatActivity {
                 //intent.putExtra("CurrentUser",user.toString());
                 startActivity(new Intent(this, RoomSelectActivity.class));
 
-            case R.id.Chat:
+            //case R.id.:
                 //final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 //Intent intent = new Intent(MainActivity.this, ChatApp.class);
                 //intent.putExtra("CurrentUser",user.toString());
-                startActivity(new Intent(this, RoomSelectActivity.class));
+                //startActivity(new Intent(this, RoomSelectActivity.class));
 
-                return true;
+               // return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
 
-    }
+    }*/
 }

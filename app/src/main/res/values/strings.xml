@@ -34,4 +34,6 @@
     <!-- View titles -->
     <string name="settings_view_title">Settings</string>
     <string name="chat_view_title">Chat</string>
+    <string name ="open">open</string>
+    <string name="close">close</string>
 </resources>

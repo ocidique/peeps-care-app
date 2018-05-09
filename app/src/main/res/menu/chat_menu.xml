@@ -2,19 +2,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item
-        android:id="@+id/settings"
-        android:orderInCategory="100"
-        app:showAsAction="never"
-        android:actionLayout="@layout/activity_chat_app"
-        android:title="@string/settings_view_title" />
+
 
     <item
-        android:id="@+id/Chat_Rooms"
+        android:id="@+id/home"
         android:orderInCategory="100"
-        app:showAsAction="never"
+        app:showAsAction=""
         android:actionLayout="@layout/activity_chat_app"
-        android:title="Chat Rooms" />
+        android:title="Home" />
+
+    <item
+        android:id="@+id/croom"
+        android:orderInCategory="100"
+        app:showAsAction=""
+        android:actionLayout="@layout/activity_chat_app"
+        android:title="Chat Room" />
     <item
         android:id="@+id/members"
         android:actionLayout="@layout/activity_chat_app"

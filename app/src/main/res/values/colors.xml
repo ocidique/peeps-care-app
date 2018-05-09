@@ -13,8 +13,8 @@
     <color name="input_login_hint">#999999</color>
     <color name="input_register">#888888</color>
     <color name="input_register_hint">#ffa438</color>
-    <color name="btn_login">#ffa438</color>
+    <color name="btn_login">#fa6006</color>
     <color name="btn_login_bg">#eceef1</color>
     <color name="lbl_name">#333333</color>
-    <color name="btn_logut_bg">#ffa438</color>
+    <color name="btn_logut_bg">#ffffff</color>
 </resources>

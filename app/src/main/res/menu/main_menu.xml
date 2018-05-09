@@ -3,15 +3,39 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/settings"
+        android:id="@+id/Chat"
         android:orderInCategory="100"
         app:showAsAction="never"
         android:actionLayout="@layout/activity_main"
-        android:title="@string/settings_view_title" />
+        android:title="Chat Room" />
     <item
-        android:id="@+id/Chat"
+        android:id="@+id/member"
         android:actionLayout="@layout/activity_main"
         android:orderInCategory="100"
-        android:title="@string/chat_view_title"
+        android:title="Member"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/Graph"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:actionLayout="@layout/activity_main"
+        android:title="Graph" />
+    <item
+        android:id="@+id/setting"
+        android:actionLayout="@layout/activity_main"
+        android:orderInCategory="100"
+        android:title="Settings"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/signout"
+        android:actionLayout="@layout/activity_main"
+        android:orderInCategory="100"
+        android:title="Signout"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/search"
+        android:icon="@drawable/magnify"
+        android:title="search"
+        app:showAsAction="ifRoom"/>
+
 </menu>

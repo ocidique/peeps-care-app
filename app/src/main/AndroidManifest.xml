@@ -31,6 +31,7 @@
         <activity android:name=".Add_Chatroom" />
         <activity android:name=".DeleteChatRoom" />
         <activity android:name=".UserInformation" />
+        <activity android:name=".Graph"></activity>
     </application>
 
 </manifest>

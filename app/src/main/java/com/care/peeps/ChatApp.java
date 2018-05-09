@@ -3,6 +3,11 @@ package com.care.peeps;
 import android.content.Intent;
 import android.icu.text.SimpleDateFormat;
 import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -40,7 +45,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ChatApp extends AppCompatActivity {
+public class ChatApp extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private EditText messagetext;
     private RecyclerView mMessageList;
@@ -56,6 +61,9 @@ public class ChatApp extends AppCompatActivity {
     String msgcontent;
     private FirebaseAuth auth;
     String roomname;
+    private DrawerLayout mDrawerLayout;
+    private ActionBarDrawerToggle mToogle;
+    NavigationView navigationView;
 
 
 
@@ -70,7 +78,14 @@ public class ChatApp extends AppCompatActivity {
         currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
         Intent Chatroom= getIntent();
         Bundle b = Chatroom.getExtras();
-        roomname =(String) b.get("roomname");
+        mDrawerLayout =(DrawerLayout) findViewById(R.id.drawlay);
+        mToogle = new ActionBarDrawerToggle(this,mDrawerLayout,R.string.open,R.string.close);
+        mDrawerLayout.addDrawerListener(mToogle);
+        mToogle.syncState();
+
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+        //roomname =(String) b.get("roomname");
 
 
 
@@ -90,12 +105,12 @@ public class ChatApp extends AppCompatActivity {
         username = auth.getCurrentUser().getEmail();
         userID= auth.getCurrentUser().getUid();
 
-        Log.d("username" , username);
-        Log.d("ACroom", roomname);
-        Log.d("UserID", userID);
+       // Log.d("username" , username);
+        //Log.d("ACroom", roomname);
+        //Log.d("UserID", userID);
 
 
-        mFirestore.collection("rooms").document(roomname).collection("messages").addSnapshotListener(new EventListener<QuerySnapshot>() {
+        mFirestore.collection("rooms").document("Linxvw0qrN6CxznrGTyc").collection("messages").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
                 for(DocumentChange doc : documentSnapshots.getDocumentChanges()) {
@@ -191,7 +206,7 @@ public class ChatApp extends AppCompatActivity {
         inflater.inflate(R.menu.chat_menu, menu);
         return true;
     }
-
+/*
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -223,6 +238,28 @@ public class ChatApp extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+*/
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item){
+    int id = item.getItemId();
+        if (id == R.id.home){
+        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        return true;
 
+    }
+        if (id == R.id.croom){
+        startActivity(new Intent(getApplicationContext(), RoomSelectActivity.class));
+        return true;
+
+    }
+        if(id == R.id.member){
+        startActivity(new Intent(getApplicationContext(), MemberSelectActivity.class));
+        return true;
+    }
+
+        mDrawerLayout.closeDrawer(GravityCompat.START);
+        return true;
+
+}
 }

@@ -22,6 +22,26 @@
         app:titleMarginStart="0dp"
         app:titleTextColor="@android:color/black" />
 
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawlaychat"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/main_toolbar"
+        tools:context=".MainActivity">
+
+        <android.support.design.widget.NavigationView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:background="@color/white"
+            app:headerLayout="@layout/header"
+            app:itemIconTint="@color/input_register"
+            app:itemTextColor="@color/input_register"
+            app:menu="@menu/main_menu"></android.support.design.widget.NavigationView>
+
+
+    </android.support.v4.widget.DrawerLayout>
+
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/editmessage"
@@ -66,7 +86,28 @@
         </Button>
 
 
+
+
     </LinearLayout>
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/main_toolbar">
+
+        <android.support.design.widget.NavigationView
+            android:id = "@+id/nav_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:background="@color/white"
+            app:headerLayout="@layout/header"
+            app:itemIconTint="@color/input_register"
+            app:itemTextColor="@color/input_register"
+            app:menu="@menu/chat_menu"></android.support.design.widget.NavigationView>
+
+
+    </android.support.v4.widget.DrawerLayout>
 
 
 </RelativeLayout>

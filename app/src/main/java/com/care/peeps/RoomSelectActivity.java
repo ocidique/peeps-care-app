@@ -48,7 +48,7 @@ public class RoomSelectActivity extends AppCompatActivity {
         String url = "https://firebasestorage.googleapis.com/v0/b/peeps-care-app.appspot.com/o/room.png?alt=media&token=516d1785-507f-4e7f-8217-1b83d54b7b42";
         android.support.v7.widget.Toolbar toolbar = findViewById(R.id.main_toolbar);
         toolbar.setTitle(R.string.app_name);
-        setSupportActionBar(toolbar);
+        //setSupportActionBar(toolbar);
 //        getActionBar().setTitle("ALL Rooms");
   //      getActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -155,7 +155,7 @@ public class RoomSelectActivity extends AppCompatActivity {
         return true;
     }
 
-    @Override
+  /*  @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.settings:
@@ -168,13 +168,13 @@ public class RoomSelectActivity extends AppCompatActivity {
                 startActivity(new Intent(this, DeleteChatRoom.class));
 
                 return true;
-            case R.id.Edit_User:
-                startActivity(new Intent(this, UserInformation.class));
+            case R.id.home:
+                startActivity(new Intent(this, MainActivity.class));
 
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
+    }*/
 
 }
