@@ -10,19 +10,13 @@
         android:icon="@drawable/baseline_home_black_24dp"
         android:title="Home"
         app:showAsAction="ifRoom" />
+
     <item
-        android:id="@+id/Add_Chat_Rooms"
-        android:orderInCategory="100"
-        android:icon="@drawable/baseline_note_add_black_24dp"
-        app:showAsAction="never"
-        android:actionLayout="@layout/activity_room_select"
-        android:title="Add ChatRoom" />
-    <item
-        android:id="@+id/Delete_ChatRooms"
+        android:id="@+id/chroom"
         android:icon="@drawable/baseline_delete_forever_black_24dp"
         android:orderInCategory="100"
         android:actionLayout="@layout/activity_room_select"
-        android:title="Delete ChatRooms"
+        android:title="ChatRooms"
         app:showAsAction="never" />
     <item
         android:id="@+id/search"

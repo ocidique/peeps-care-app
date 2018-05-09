@@ -78,7 +78,7 @@ public class ChatApp extends AppCompatActivity implements NavigationView.OnNavig
         currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
         Intent Chatroom= getIntent();
         Bundle b = Chatroom.getExtras();
-        mDrawerLayout =(DrawerLayout) findViewById(R.id.drawlay);
+        mDrawerLayout =(DrawerLayout) findViewById(R.id.drawlaychat);
         mToogle = new ActionBarDrawerToggle(this,mDrawerLayout,R.string.open,R.string.close);
         mDrawerLayout.addDrawerListener(mToogle);
         mToogle.syncState();
@@ -144,40 +144,7 @@ public class ChatApp extends AppCompatActivity implements NavigationView.OnNavig
 
     }
     public void onButtonClicked(View view) {
-        //Bundle extras = getIntent().getExtras();
-        //String value = extras.getString("CurrentUser");
-        //getUsername = FirebaseFirestore.getInstance().document("users/CurrentUser");
-        /*getUsername.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                if (documentSnapshot.exists()){
-                    cUser = documentSnapshot.getString("name");
 
-
-
-                }
-            }
-        });
-        String cUser = "qDSWt4zmRMJMWon2NrJ1";
-        final String getcontent = messagetext.getText().toString().trim();
-        Map<String,Object> datatosave= new HashMap<String,Object>();
-        datatosave.put(SenderName,cUser);
-        datatosave.put(content,getcontent);
-        datatosave.put(cDate,"9:15");
-        documentreference.set(datatosave).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful())
-                {
-                    Toast.makeText(getApplicationContext(), "Data Saved Succesfully!",
-                            Toast.LENGTH_LONG).show();
-                }else
-                {
-                    Toast.makeText(getApplicationContext(), "Data donot Saved Successfully!",
-                            Toast.LENGTH_LONG).show();
-                }
-            }
-        });*/
 
         messagetext = (EditText) findViewById(R.id.messagetext);
         msgcontent = messagetext.getText().toString();
@@ -206,26 +173,20 @@ public class ChatApp extends AppCompatActivity implements NavigationView.OnNavig
         inflater.inflate(R.menu.chat_menu, menu);
         return true;
     }
-/*
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.settings:
-                startActivity(new Intent(this, SettingsActivity.class));
+            case R.id.home:
+                startActivity(new Intent(this, MainActivity.class));
                 return true;
-            case R.id.Chat_Rooms:
+            case R.id.croom:
                 //final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                 //Intent intent = new Intent(MainActivity.this, ChatApp.class);
                 //intent.putExtra("CurrentUser",user.toString());
                 startActivity(new Intent(this, RoomSelectActivity.class));
                 return true;
 
-            case R.id.List_Members:
-                //final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                //Intent intent = new Intent(MainActivity.this, ChatApp.class);
-                //intent.putExtra("CurrentUser",user.toString());
-                startActivity(new Intent(this, MemberSelectActivity.class));
-                return true;
 
             case R.id.Add_members:
                 //final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -238,7 +199,7 @@ public class ChatApp extends AppCompatActivity implements NavigationView.OnNavig
                 return super.onOptionsItemSelected(item);
         }
     }
-*/
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item){
@@ -253,7 +214,7 @@ public class ChatApp extends AppCompatActivity implements NavigationView.OnNavig
         return true;
 
     }
-        if(id == R.id.member){
+        if(id == R.id.List_Members){
         startActivity(new Intent(getApplicationContext(), MemberSelectActivity.class));
         return true;
     }

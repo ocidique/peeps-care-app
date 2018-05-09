@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="1dp"
     >
 
 
@@ -12,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="false"
-        android:layout_marginTop="0dp"
         android:layout_gravity="center_vertical"
         android:background="@drawable/roomshape"
         android:focusableInTouchMode="false">
@@ -25,18 +23,19 @@
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:layout_marginStart="0dp"
-             />
+            android:src="@drawable/roomc" />
 
         <TextView
             android:id="@+id/room_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
             android:layout_toEndOf="@+id/imageView"
-            android:text="First Chat room"
+            android:text="Chat Room"
             android:textColor="@android:color/background_dark"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/room_status"
@@ -45,7 +44,8 @@
             android:layout_alignStart="@+id/room_name"
             android:layout_below="@+id/room_name"
             android:text="Room 112"
-            android:textColor="@color/input_login" />
+            android:textColor="@color/input_login"
+            android:textSize="10sp"/>
 
 
     </RelativeLayout>

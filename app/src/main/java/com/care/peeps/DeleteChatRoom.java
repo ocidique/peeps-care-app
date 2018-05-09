@@ -2,9 +2,15 @@ package com.care.peeps;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -36,6 +42,9 @@ public class DeleteChatRoom extends AppCompatActivity {
     private FirebaseFirestore mFirestore;
     private List<Room_model> room_modelList;
     private DeleteAdapterList roomAdapterList;
+    private DrawerLayout mDrawerLayout;
+    private ActionBarDrawerToggle mToogle;
+    NavigationView navigationView;
 
 
 
@@ -47,10 +56,8 @@ public class DeleteChatRoom extends AppCompatActivity {
         android.support.v7.widget.Toolbar toolbar = findViewById(R.id.main_toolbar);
         toolbar.setTitle(R.string.app_name);
         setSupportActionBar(toolbar);
-//        getActionBar().setTitle("ALL Rooms");
-        //      getActionBar().setDisplayHomeAsUpEnabled(true);
+        ActionBar ab = getSupportActionBar();
 
-        //mroomdb = FirebaseDatabase.getInstance().getReference().child("Room");
         room_modelList = new ArrayList<>();
         roomAdapterList = new DeleteAdapterList(room_modelList);
 
@@ -67,10 +74,8 @@ public class DeleteChatRoom extends AppCompatActivity {
             @Override
             public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
 
-                for(DocumentChange doc : documentSnapshots.getDocumentChanges()) {
-                    if (doc.getType() == DocumentChange.Type.ADDED){
-
-
+                for (DocumentChange doc : documentSnapshots.getDocumentChanges()) {
+                    if (doc.getType() == DocumentChange.Type.ADDED) {
 
 
                         Room_model rooms = doc.getDocument().toObject(Room_model.class);
@@ -82,98 +87,28 @@ public class DeleteChatRoom extends AppCompatActivity {
             }
         });
 
-
-        /*relativeLayout1 = (RelativeLayout) findViewById(R.id.Layout1);
-        relativeLayout2 = (RelativeLayout) findViewById(R.id.Layout2);
-        relativeLayout3 = (RelativeLayout) findViewById(R.id.Layout3);
-
-        relativeLayout1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                startActivity(new Intent(RoomSelectActivity.this, ChatApp.class));
-
-            }
-        });
-
-        relativeLayout2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(RoomSelectActivity.this, ChatApp.class));
-            }
-        });
-
-        relativeLayout3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(RoomSelectActivity.this, ChatApp.class));
-            }
-        });*/
-
-
     }
-
-    /*@Override
-    protected void onStart() {
-        super.onStart();
-
-        FirebaseRecyclerAdapter<Room_model,RoomViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Room_model, RoomViewHolder>() {
-
-            @Override
-            protected void onBindViewHolder(@NonNull RoomViewHolder holder, int position, @NonNull Room_model model) {
-
-
-            }
-
-            @Override
-            public RoomViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-                return null;
-            }
-
-        };
-    }
-
-    public class RoomViewHolder extends RecyclerView.ViewHolder{
-        View mView;
-
-        public RoomViewHolder(View itemView) {
-            super(itemView);
-
-            mView = itemView;
-        }
-    }*/
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.room_menu, menu);
-        return true;
+        inflater.inflate(R.menu.deleteroom,menu);
+        return super.onCreateOptionsMenu(menu);
     }
-
-/*
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.settings:
-                startActivity(new Intent(this, SettingsActivity.class));
+            case R.id.home:
+                startActivity(new Intent(this, MainActivity.class));
                 return true;
-            case R.id.Add_Chat_Rooms:
-                //final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                //Intent intent = new Intent(MainActivity.this, ChatApp.class);
-                //intent.putExtra("CurrentUser",user.toString());
+            case R.id.chroom:
                 startActivity(new Intent(this, RoomSelectActivity.class));
-
-            //case R.id.:
-                //final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                //Intent intent = new Intent(MainActivity.this, ChatApp.class);
-                //intent.putExtra("CurrentUser",user.toString());
-                //startActivity(new Intent(this, RoomSelectActivity.class));
-
-               // return true;
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
 
-    }*/
+
+
 }
+

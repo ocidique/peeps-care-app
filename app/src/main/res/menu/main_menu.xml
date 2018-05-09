@@ -5,37 +5,38 @@
     <item
         android:id="@+id/Chat"
         android:orderInCategory="100"
+        android:icon="@drawable/round_chat_black_24dp"
         app:showAsAction="never"
         android:actionLayout="@layout/activity_main"
         android:title="Chat Room" />
-    <item
-        android:id="@+id/member"
-        android:actionLayout="@layout/activity_main"
-        android:orderInCategory="100"
-        android:title="Member"
-        app:showAsAction="never" />
+
     <item
         android:id="@+id/Graph"
         android:orderInCategory="100"
+        android:icon="@drawable/baseline_timeline_black_24dp"
         app:showAsAction="never"
         android:actionLayout="@layout/activity_main"
         android:title="Graph" />
     <item
+        android:id="@+id/search"
+        android:icon="@drawable/magnify"
+        android:orderInCategory="100"
+        android:title="Search"
+        app:showAsAction="never"/>
+    <item
         android:id="@+id/setting"
+        android:icon="@drawable/round_settings_black_24dp"
         android:actionLayout="@layout/activity_main"
         android:orderInCategory="100"
         android:title="Settings"
         app:showAsAction="never" />
     <item
         android:id="@+id/signout"
+        android:icon="@drawable/outline_power_settings_new_black_24dp"
         android:actionLayout="@layout/activity_main"
         android:orderInCategory="100"
         android:title="Signout"
         app:showAsAction="never" />
-    <item
-        android:id="@+id/search"
-        android:icon="@drawable/magnify"
-        android:title="search"
-        app:showAsAction="ifRoom"/>
+
 
 </menu>

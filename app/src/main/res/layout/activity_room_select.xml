@@ -6,32 +6,6 @@
     android:layout_height="match_parent"
     tools:context="com.care.peeps.RoomSelectActivity">
 
-
-
-
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/main_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:background="@android:color/holo_orange_light"
-            android:elevation="4dp"
-            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:title="Avaiable Rooms"
-            app:titleMargin="0dp"
-            app:titleMarginStart="0dp"
-            app:titleTextColor="@android:color/black" />
-
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentBottom="true"
-            android:layout_below="@id/main_toolbar"
-            android:layout_alignParentStart="true"></android.support.v7.widget.RecyclerView>
-
         <android.support.v4.widget.DrawerLayout
             android:id="@+id/drawlay"
             android:layout_width="match_parent"
@@ -52,5 +26,30 @@
 
 
         </android.support.v4.widget.DrawerLayout>
+
+
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/main_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:background="@color/title"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:titleMargin="0dp"
+            app:titleMarginStart="0dp"
+            app:titleTextColor="@android:color/black" />
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@id/main_toolbar"
+            android:layout_alignParentStart="true"></android.support.v7.widget.RecyclerView>
+
+
 
 </RelativeLayout>

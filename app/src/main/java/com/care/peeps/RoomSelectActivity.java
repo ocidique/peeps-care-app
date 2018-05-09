@@ -1,6 +1,12 @@
 package com.care.peeps;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -36,9 +42,10 @@ public class RoomSelectActivity extends AppCompatActivity {
     private List<Room_model> room_modelList;
     private RoomAdapterList roomAdapterList;
     private DatabaseReference mroomdb;
-    //private RelativeLayout relativeLayout1;
-    //private RelativeLayout relativeLayout2;
-    //private RelativeLayout relativeLayout3;
+    private DrawerLayout mDrawerLayout;
+    private ActionBarDrawerToggle mToogle;
+    NavigationView navigationView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,11 +55,21 @@ public class RoomSelectActivity extends AppCompatActivity {
         String url = "https://firebasestorage.googleapis.com/v0/b/peeps-care-app.appspot.com/o/room.png?alt=media&token=516d1785-507f-4e7f-8217-1b83d54b7b42";
         android.support.v7.widget.Toolbar toolbar = findViewById(R.id.main_toolbar);
         toolbar.setTitle(R.string.app_name);
-        //setSupportActionBar(toolbar);
-//        getActionBar().setTitle("ALL Rooms");
-  //      getActionBar().setDisplayHomeAsUpEnabled(true);
+        setSupportActionBar(toolbar);
+        ActionBar ab = getSupportActionBar();
+        //ab.setDisplayHomeAsUpEnabled(true);
 
-        //mroomdb = FirebaseDatabase.getInstance().getReference().child("Room");
+        //toolbar.setLogo(R.drawable.menu);
+
+
+        //toolbar.setLogo();
+        mDrawerLayout =(DrawerLayout) findViewById(R.id.drawlay);
+        mToogle = new ActionBarDrawerToggle(this,mDrawerLayout,R.string.open,R.string.close);
+        mDrawerLayout.addDrawerListener(mToogle);
+        mToogle.syncState();
+
+       // navigationView = (NavigationView) findViewById(R.id.nav_view);
+        //navigationView.setNavigationItemSelectedListener(this);
         room_modelList = new ArrayList<>();
         roomAdapterList = new RoomAdapterList(room_modelList);
 
@@ -87,94 +104,66 @@ public class RoomSelectActivity extends AppCompatActivity {
         });
 
 
-        /*relativeLayout1 = (RelativeLayout) findViewById(R.id.Layout1);
-        relativeLayout2 = (RelativeLayout) findViewById(R.id.Layout2);
-        relativeLayout3 = (RelativeLayout) findViewById(R.id.Layout3);
-
-        relativeLayout1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                startActivity(new Intent(RoomSelectActivity.this, ChatApp.class));
-
-            }
-        });
-
-        relativeLayout2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(RoomSelectActivity.this, ChatApp.class));
-            }
-        });
-
-        relativeLayout3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(RoomSelectActivity.this, ChatApp.class));
-            }
-        });*/
-
-
     }
 
-    /*@Override
-    protected void onStart() {
-        super.onStart();
-
-        FirebaseRecyclerAdapter<Room_model,RoomViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Room_model, RoomViewHolder>() {
-
-            @Override
-            protected void onBindViewHolder(@NonNull RoomViewHolder holder, int position, @NonNull Room_model model) {
-
-
-            }
-
-            @Override
-            public RoomViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-                return null;
-            }
-
-        };
-    }
-
-    public class RoomViewHolder extends RecyclerView.ViewHolder{
-        View mView;
-
-        public RoomViewHolder(View itemView) {
-            super(itemView);
-
-            mView = itemView;
-        }
-    }*/
 
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.room_menu, menu);
-        return true;
+    public void onBackPressed() {
+        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+            mDrawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
     }
 
-  /*  @Override
+
+
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.settings:
-                startActivity(new Intent(this, SettingsActivity.class));
+            case R.id.home:
+                startActivity(new Intent(this, MainActivity.class));
                 return true;
             case R.id.Add_Chat_Rooms:
                 startActivity(new Intent(this, Add_Chatroom.class));
                 return true;
             case R.id.Delete_ChatRooms:
                 startActivity(new Intent(this, DeleteChatRoom.class));
-
-                return true;
-            case R.id.home:
-                startActivity(new Intent(this, MainActivity.class));
-
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+    /*
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item){
+        int id = item.getItemId();
+        if (id == R.id.home){
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            return true;
+
+        }
+        if (id == R.id.Add_Chat_Rooms){
+            startActivity(new Intent(getApplicationContext(), Add_Chatroom.class));
+            return true;
+
+        }
+        if(id == R.id.Delete_ChatRooms){
+            startActivity(new Intent(getApplicationContext(), DeleteChatRoom.class));
+            return true;
+        }
+
+        mDrawerLayout.closeDrawer(GravityCompat.START);
+        return true;
+
     }*/
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.room_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 }

@@ -7,32 +7,37 @@
     <item
         android:id="@+id/home"
         android:orderInCategory="100"
-        app:showAsAction=""
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/baseline_home_black_24dp"
         android:actionLayout="@layout/activity_chat_app"
         android:title="Home" />
 
     <item
         android:id="@+id/croom"
         android:orderInCategory="100"
-        app:showAsAction=""
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/round_chat_black_24dp"
         android:actionLayout="@layout/activity_chat_app"
         android:title="Chat Room" />
     <item
         android:id="@+id/members"
         android:actionLayout="@layout/activity_chat_app"
         android:orderInCategory="100"
+        android:icon="@drawable/round_people_black_24dp"
         android:title="Members"
         app:showAsAction="never" >
     <menu>
         <item
             android:id="@+id/List_Members"
             android:orderInCategory="100"
+            android:icon="@drawable/round_group_add_black_24dp"
             app:showAsAction="never"
             android:actionLayout="@layout/activity_chat_app"
             android:title="Member List" />
         <item
             android:id="@+id/Add_members"
             android:orderInCategory="100"
+            android:icon="@drawable/baseline_delete_forever_black_24dp"
             app:showAsAction="never"
             android:actionLayout="@layout/activity_chat_app"
             android:title="Add Members" />

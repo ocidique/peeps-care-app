@@ -67,8 +67,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
             }
         };
-    }
 
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(mToogle.onOptionsItemSelected(item)){
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+
+    }
 
 
     @Override
@@ -93,6 +102,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
@@ -101,11 +111,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             return true;
 
         }
-        if (id == R.id.member){
-            startActivity(new Intent(getApplicationContext(), MemberSelectActivity.class));
-            return true;
 
-        }
         if(id == R.id.Graph){
             startActivity(new Intent(getApplicationContext(), Graph.class));
             return true;
