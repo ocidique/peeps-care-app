@@ -65,7 +65,7 @@ public class SettingsActivity extends AppCompatActivity {
         changePassword = findViewById(R.id.changePass);
         sendEmail = findViewById(R.id.send);
         remove = findViewById(R.id.remove);
-        signOut = findViewById(R.id.sign_out);
+        //signOut = findViewById(R.id.sign_out);
 
         oldEmail = findViewById(R.id.old_email);
         newEmail = findViewById(R.id.new_email);
@@ -236,17 +236,34 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });*/
 
-        signOut.setOnClickListener(new View.OnClickListener() {
+        /*signOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 signOut();
             }
-        });
+        });*/
 
     }
 
     public void signOut() {
         auth.signOut();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.graph_menu, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.home:
+                startActivity(new Intent(this, MainActivity.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override

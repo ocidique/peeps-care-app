@@ -45,7 +45,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ChatApp extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class ChatApp extends AppCompatActivity  {
 
     private EditText messagetext;
     private RecyclerView mMessageList;
@@ -78,16 +78,16 @@ public class ChatApp extends AppCompatActivity implements NavigationView.OnNavig
         currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
         Intent Chatroom= getIntent();
 
-        mDrawerLayout =(DrawerLayout) findViewById(R.id.drawlaychat);
-        mToogle = new ActionBarDrawerToggle(this,mDrawerLayout,R.string.open,R.string.close);
-        mDrawerLayout.addDrawerListener(mToogle);
-        mToogle.syncState();
+       // mDrawerLayout =(DrawerLayout) findViewById(R.id.drawlaychat);
+        //mToogle = new ActionBarDrawerToggle(this,mDrawerLayout,R.string.open,R.string.close);
+        //mDrawerLayout.addDrawerListener(mToogle);
+        //mToogle.syncState();
 
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        //navigationView = (NavigationView) findViewById(R.id.nav_view);
+        //navigationView.setNavigationItemSelectedListener(this);
         Bundle b = Chatroom.getExtras();
         roomname =(String) b.get("roomname");
-        Log.d("name_of_room",roomname);
+        //Log.d("name_of_room",roomname);
 
 
 
@@ -101,7 +101,10 @@ public class ChatApp extends AppCompatActivity implements NavigationView.OnNavig
         messageAdapterList = new MessageAdapterList(mMessagemodel);
         mMessageList = (RecyclerView) findViewById(R.id.editmessage);
         mMessageList.setHasFixedSize(true);
-        mMessageList.setLayoutManager(new LinearLayoutManager(this));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setStackFromEnd(true);
+        mMessageList.setLayoutManager(layoutManager);
+
         mMessageList.setAdapter(messageAdapterList);
         auth = FirebaseAuth.getInstance();
         username = auth.getCurrentUser().getEmail();
@@ -153,10 +156,11 @@ public class ChatApp extends AppCompatActivity implements NavigationView.OnNavig
         messageMap.put(SenderName,username);
         messageMap.put(content,msgcontent);
 
-        mFirestore.collection("rooms").document("Linxvw0qrN6CxznrGTyc").collection("messages").add(messageMap).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+        mFirestore.collection("rooms").document(roomname).collection("messages").add(messageMap).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override
             public void onSuccess(DocumentReference documentReference) {
                 Toast.makeText(ChatApp.this,"message added",Toast.LENGTH_LONG).show();
+                messagetext.setText("");
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -201,7 +205,7 @@ public class ChatApp extends AppCompatActivity implements NavigationView.OnNavig
     }
 
 
-    @Override
+   /* @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item){
     int id = item.getItemId();
         if (id == R.id.home){
@@ -222,5 +226,5 @@ public class ChatApp extends AppCompatActivity implements NavigationView.OnNavig
         mDrawerLayout.closeDrawer(GravityCompat.START);
         return true;
 
-}
+}*/
 }

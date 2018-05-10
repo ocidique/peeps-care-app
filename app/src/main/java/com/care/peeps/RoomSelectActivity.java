@@ -32,10 +32,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RoomSelectActivity extends AppCompatActivity {
-  // private DocumentReference documentreference = FirebaseFirestore.getInstance().collection("rooms").document("");
-   TextView rooms;
 
-
+    public TextView rooms;
     private Toolbar toolbar;
     private RecyclerView mroomlist;
     private FirebaseFirestore mFirestore;
@@ -44,7 +42,6 @@ public class RoomSelectActivity extends AppCompatActivity {
     private DatabaseReference mroomdb;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToogle;
-    NavigationView navigationView;
 
 
     @Override
@@ -57,19 +54,7 @@ public class RoomSelectActivity extends AppCompatActivity {
         toolbar.setTitle(R.string.app_name);
         setSupportActionBar(toolbar);
         ActionBar ab = getSupportActionBar();
-        //ab.setDisplayHomeAsUpEnabled(true);
 
-        //toolbar.setLogo(R.drawable.menu);
-
-
-        //toolbar.setLogo();
-        mDrawerLayout =(DrawerLayout) findViewById(R.id.drawlay);
-        mToogle = new ActionBarDrawerToggle(this,mDrawerLayout,R.string.open,R.string.close);
-        mDrawerLayout.addDrawerListener(mToogle);
-        mToogle.syncState();
-
-       // navigationView = (NavigationView) findViewById(R.id.nav_view);
-        //navigationView.setNavigationItemSelectedListener(this);
         room_modelList = new ArrayList<>();
         roomAdapterList = new RoomAdapterList(room_modelList);
 
@@ -137,29 +122,7 @@ public class RoomSelectActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-    /*
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item){
-        int id = item.getItemId();
-        if (id == R.id.home){
-            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-            return true;
 
-        }
-        if (id == R.id.Add_Chat_Rooms){
-            startActivity(new Intent(getApplicationContext(), Add_Chatroom.class));
-            return true;
-
-        }
-        if(id == R.id.Delete_ChatRooms){
-            startActivity(new Intent(getApplicationContext(), DeleteChatRoom.class));
-            return true;
-        }
-
-        mDrawerLayout.closeDrawer(GravityCompat.START);
-        return true;
-
-    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

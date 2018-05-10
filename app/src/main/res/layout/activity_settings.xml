@@ -13,7 +13,7 @@
         android:id="@+id/main_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
+        android:background="@color/title"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
@@ -156,7 +156,7 @@
             android:text="@string/remove_user"
             android:textStyle="bold" /-->
 
-        <Button
+        <!--<Button
             android:id="@+id/sign_out"
             style="?android:textAppearanceSmall"
             android:layout_width="match_parent"
@@ -165,7 +165,7 @@
             android:background="@color/colorAccent"
             android:text="@string/btn_sign_out"
             android:textColor="@android:color/white"
-            android:textStyle="bold" />
+            android:textStyle="bold" /> -->
 
     </LinearLayout>
 
